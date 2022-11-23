@@ -33,8 +33,8 @@ class MainWidget(RelativeLayout):
     H_LINES_SPACING = 0.2
     horizontal_lines = []
 
-    SPEED_Y = 1
-    SPEED_X = 1
+    SPEED_Y = 0.5
+    SPEED_X = 2
 
     NB_TILES = 10
     tiles = []
@@ -284,7 +284,8 @@ class MainWidget(RelativeLayout):
         self.update_ship()
 
         if self.game_started and not self.game_over:
-            speed_y = self.SPEED_Y * self.height / 100
+            speed_multiplier = 1 + self.current_y_loop / 100
+            speed_y = self.SPEED_Y * speed_multiplier * self.height / 100 
             self.current_offset_y += speed_y * time_factor 
 
             spacing_y = self.H_LINES_SPACING * self.height
