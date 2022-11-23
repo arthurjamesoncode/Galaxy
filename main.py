@@ -19,7 +19,7 @@ Builder.load_file("menu.kv")
 
 class MainWidget(RelativeLayout):
     from transforms import transform, transform_2D, transform_perspective
-    from user_actions import _keyboard_closed, on_keyboard_down, on_keyboard_up, on_touch_down, on_touch_up
+    from user_actions import _keyboard_closed, on_keyboard_down, on_keyboard_up, on_touch_down, on_touch_up, on_touch_move
 
     menu_widget = ObjectProperty()
     perspective_point_x = NumericProperty(0)
