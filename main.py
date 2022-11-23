@@ -284,6 +284,8 @@ class MainWidget(RelativeLayout):
         self.update_ship()
 
         if self.game_started and not self.game_over:
+            if self.sound_music1.state == "stop":
+                self.sound_music1.play()
             speed_multiplier = 1 + self.current_y_loop / 100
             speed_y = self.SPEED_Y * speed_multiplier * self.height / 100 
             self.current_offset_y += speed_y * time_factor 
@@ -302,8 +304,12 @@ class MainWidget(RelativeLayout):
             self.menu_widget.opacity = 1
             self.game_over = True
             self.sound_game_over_impact.play()
-            self.sound_game_over_voice.play()
+            Clock.schedule_once(self.play_game_over_voice_sound, 1)
             self.sound_music1.stop()
+
+    def play_game_over_voice_sound(self, dt):
+        if self.game_over:
+            self.sound_game_over_voice.play()
     
     def on_menu_button_pressed(self):
         if not self.game_started:
