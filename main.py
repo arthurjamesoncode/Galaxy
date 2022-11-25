@@ -18,7 +18,7 @@ import random
 Builder.load_file("menu.kv")
 
 class MainWidget(RelativeLayout):
-    from transforms import transform, transform_2D, transform_perspective
+    from transforms import transform
     from user_actions import _keyboard_closed, on_keyboard_down, on_keyboard_up, on_touch_down, on_touch_up, on_touch_move, adjust_x_speed
 
     menu_widget = ObjectProperty()
